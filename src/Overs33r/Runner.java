@@ -1,9 +1,13 @@
 package Overs33r;
 
+import Beings.Ghoul;
+import Beings.Villager;
 import Board.Board;
+import Overworld.Dungeon;
 import Overworld.TheMedium;
 import Beings.Persona;
 import Overworld.Village;
+import Overworld.VillageEmpty;
 
 import java.util.Scanner;
 
@@ -17,12 +21,12 @@ public class Runner {
         String[][] buildingPrint = new String[5][5];
         Board board = new Board(buildingPrint);
 
-        //Fill the building with normal rooms
+        //Fill the building with villages
         for (int x = 0; x<building.length; x++)
         {
             for (int y = 0; y < building[x].length; y++)
             {
-                building[x][y] = new TheMedium(x,y);
+                building[x][y] = new VillageEmpty(x,y);
             }
         }
 
@@ -30,26 +34,38 @@ public class Runner {
         //Create a random winning room.
         int x = (int)(Math.random()*building.length);
         int y = (int)(Math.random()*building.length);
-        building[x][y] = new Village(x, y);
+        building[0][0] = new TheMedium(0, 0);
+        building[2][2] = new Dungeon(2, 2);
+        building[0][1] = new Village(0,1);
 
-        //Setup player 1 and the input scanner
-        Persona player1 = new Persona("FirstName", "FamilyName", 0,0);
+        //Setup player 1, the ghoul, the villager, and the input scanner
+        Persona player1 = new Persona("ROMA", "C.", 0,0);
+        Ghoul ghoul = new Ghoul("Napster","Blook",2,2);
+        Villager villager = new Villager("John","Hopkins",1,0);
         building[0][0].enterRoom(player1);
+        building[2][2].enemyRoom(ghoul);
+        building[0][1].villagerRoom(villager);
+
+
         Scanner in = new Scanner(System.in);
         while(gameOn)
         {
             board.fill("[]");
             board.edit(player1,0,0);
+            board.edit(ghoul,2,2);
+            board.edit(villager,1,0);
             System.out.print(board);
-            System.out.println("Where would you like to move? (Choose N, S, E, W)");
+            System.out.println("Where will you spread your influence over this world next? (Move your ICON using W,A,S,D)");
             String move = in.nextLine();
             if(validMove(move, player1, building))
             {
-                System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
+                System.out.println("Your LOCATION is now: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
 
             }
             else {
-                System.out.println("Please choose a valid move.");
+                System.out.println("----------------------------------------------");
+                System.out.println("Be serious. Follow the INSTRUCTIONS you were given.");
+                System.out.println("----------------------------------------------");
             }
 
 
@@ -69,7 +85,7 @@ public class Runner {
     {
         move = move.toLowerCase().trim();
         switch (move) {
-            case "n":
+            case "w":
                 if (p.getxLoc() > 0)
                 {
                     map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -80,7 +96,7 @@ public class Runner {
                 {
                     return false;
                 }
-            case "e":
+            case "d":
                 if (p.getyLoc()< map[p.getyLoc()].length -1)
                 {
                     map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -104,7 +120,7 @@ public class Runner {
                     return false;
                 }
 
-            case "w":
+            case "a":
                 if (p.getyLoc() > 0)
                 {
                     map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
