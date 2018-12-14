@@ -33,6 +33,7 @@ public class Dungeon extends TheMedium {
             System.out.println("----------------------------------------------");
             Runner.gameOff();
         }
+        
         else
         {
             System.out.println("\t You quickly and easily dispatch the GHOUL with the MAGIC WORD. Perhaps it should have been a bit more cautious.");
