@@ -49,7 +49,7 @@ public class Runner {
         Scanner in = new Scanner(System.in);
         while(gameOn)
         {
-            board.fill("[]");
+            board.fill("[ ]");
             board.edit(player1,0,0);
             board.edit(ghoul,2,2);
             board.edit(villager,4,3);
