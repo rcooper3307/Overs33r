@@ -3,8 +3,9 @@ package Beings;
     /**
      * Person represents the player as they move through the game.
      */
-    public class Persona
+    public abstract class Persona
     {
+        //creates the basis for all beings
         String firstName;
         String familyName;
         int xLoc, yLoc;

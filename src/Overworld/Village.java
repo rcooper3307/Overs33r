@@ -6,10 +6,12 @@ import Beings.Villager;
 public class Village extends TheMedium
 {
     static boolean isActive = true;
+    //sets up the village position
     public Village (int x, int y)
     {
         super(x, y);
     }
+    //sets the villager in the village
     public void villagerRoom(Villager x)
     {
         occupant = x;
@@ -46,6 +48,7 @@ public class Village extends TheMedium
         villageInactive();
         occupant = null;
     }
+    //Activates after visiting the village
     public static void villageInactive()
     {
         isActive = false;

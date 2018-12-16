@@ -8,6 +8,7 @@ import Overworld.TheMedium;
 import Beings.Persona;
 import Overworld.Village;
 import Overworld.VillageEmpty;
+import Beings.Player;
 
 import java.util.Scanner;
 
@@ -39,7 +40,7 @@ public class Runner {
         building[4][3] = new Village(4,3);
 
         //Setup player 1, the ghoul, the villager, and the input scanner
-        Persona player1 = new Persona("ROMA", "C.", 0,0);
+        Persona player1 = new Player("ROMA", "C.", 0,0);
         Ghoul ghoul = new Ghoul("Napster","Blook",2,2);
         Villager villager = new Villager("John","Hopkins",4,3);
         building[0][0].enterRoom(player1);
