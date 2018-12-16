@@ -31,20 +31,20 @@ public class Runner {
         }
 
 
-        //Create a random winning room.
+        //Creates the spawn room, the Boss Dungeon, and the village.
         int x = (int)(Math.random()*building.length);
         int y = (int)(Math.random()*building.length);
         building[0][0] = new TheMedium(0, 0);
         building[2][2] = new Dungeon(2, 2);
-        building[0][1] = new Village(0,1);
+        building[4][3] = new Village(4,3);
 
         //Setup player 1, the ghoul, the villager, and the input scanner
         Persona player1 = new Persona("ROMA", "C.", 0,0);
         Ghoul ghoul = new Ghoul("Napster","Blook",2,2);
-        Villager villager = new Villager("John","Hopkins",1,0);
+        Villager villager = new Villager("John","Hopkins",4,3);
         building[0][0].enterRoom(player1);
         building[2][2].enemyRoom(ghoul);
-        building[0][1].villagerRoom(villager);
+        building[4][3].villagerRoom(villager);
 
 
         Scanner in = new Scanner(System.in);
@@ -53,7 +53,7 @@ public class Runner {
             board.fill("[]");
             board.edit(player1,0,0);
             board.edit(ghoul,2,2);
-            board.edit(villager,1,0);
+            board.edit(villager,4,3);
             System.out.print(board);
             System.out.println("Where will you spread your influence over this world next? (Move your ICON using W,A,S,D)");
             String move = in.nextLine();

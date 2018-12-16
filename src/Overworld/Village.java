@@ -1,16 +1,22 @@
 package Overworld;
 
 import Beings.Persona;
+import Beings.Villager;
 
 public class Village extends TheMedium
 {
-    static boolean isActive;
-    public Village (int x, int y) {
+    static boolean isActive = true;
+    public Village (int x, int y)
+    {
         super(x, y);
-        isActive = true;
-
-
     }
+    public void villagerRoom(Villager x)
+    {
+        occupant = x;
+        x.setxLoc(this.xLoc);
+        x.setyLoc(this.yLoc);
+    }
+
 
     /**
      * @param x the Person entering
@@ -29,17 +35,20 @@ public class Village extends TheMedium
             x.setxLoc(this.xLoc);
             x.setyLoc(this.yLoc);
 
-
     }
-
     /**
      * Removes the player from the room.
      * @param x
      */
+
     public void leaveRoom(Persona x)
     {
-        isActive = false;
+        villageInactive();
         occupant = null;
+    }
+    public static void villageInactive()
+    {
+        isActive = false;
     }
 
 
