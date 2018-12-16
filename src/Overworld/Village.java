@@ -1,9 +1,9 @@
 package Overworld;
 
-import Beings.Persona;
+import Beings.Player;
 import Beings.Villager;
 
-public class Village extends TheMedium
+public class Village extends TheMedium implements EnterAndExit
 {
     static boolean isActive = true;
     //sets up the village position
@@ -24,7 +24,7 @@ public class Village extends TheMedium
      * @param x the Person entering
      */
     //creates the dialogue for entering the village
-    public void enterRoom(Persona x)
+    public void enterRoom(Player x)
     {
             System.out.println("----------------------------------------------");
             System.out.println("\t A lone VILLAGER occupies the VILLAGE. They are IN YOUR WAY.");
@@ -43,7 +43,7 @@ public class Village extends TheMedium
      * @param x
      */
 
-    public void leaveRoom(Persona x)
+    public void leaveRoom(Player x)
     {
         villageInactive();
         occupant = null;

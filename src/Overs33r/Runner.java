@@ -5,7 +5,7 @@ import Beings.Villager;
 import Board.Board;
 import Overworld.Dungeon;
 import Overworld.TheMedium;
-import Beings.Persona;
+import Overworld.SpawnRoom;
 import Overworld.Village;
 import Overworld.VillageEmpty;
 import Beings.Player;
@@ -33,14 +33,12 @@ public class Runner {
 
 
         //Creates the spawn room, the Boss Dungeon, and the village.
-        int x = (int)(Math.random()*building.length);
-        int y = (int)(Math.random()*building.length);
-        building[0][0] = new TheMedium(0, 0);
+        building[0][0] = new SpawnRoom(0, 0);
         building[2][2] = new Dungeon(2, 2);
         building[4][3] = new Village(4,3);
 
         //Setup player 1, the ghoul, the villager, and the input scanner
-        Persona player1 = new Player("ROMA", "C.", 0,0);
+        Player player1 = new Player("ROMA", "C.", 0,0);
         Ghoul ghoul = new Ghoul("Napster","Blook",2,2);
         Villager villager = new Villager("John","Hopkins",4,3);
         building[0][0].enterRoom(player1);
@@ -82,7 +80,7 @@ public class Runner {
      * @return
      */
 
-    public static boolean validMove(String move, Persona p, TheMedium[][] map)
+    public static boolean validMove(String move, Player p, TheMedium[][] map)
     {
         move = move.toLowerCase().trim();
         switch (move) {

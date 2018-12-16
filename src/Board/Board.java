@@ -1,7 +1,7 @@
 package Board;
 
-import Beings.Persona;
 import Beings.Ghoul;
+import Beings.Player;
 import Beings.Villager;
 public class Board
 {
@@ -11,7 +11,7 @@ public class Board
             this.map = map;
         }
         //makes a spot on the map for the player
-        public void edit(Persona person, int row, int column)
+        public void edit(Player person, int row, int column)
         {
             row = person.getxLoc();
             column = person.getyLoc();

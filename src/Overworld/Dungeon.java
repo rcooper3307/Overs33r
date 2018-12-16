@@ -1,10 +1,10 @@
 package Overworld;
 
 import Beings.Ghoul;
-import Beings.Persona;
+import Beings.Player;
 import Overs33r.Runner;
 
-public class Dungeon extends TheMedium {
+public class Dungeon extends TheMedium implements EnterAndExit {
     public Dungeon (int x, int y) {
         super(x, y);
 
@@ -18,7 +18,7 @@ public class Dungeon extends TheMedium {
     /**
      * @param x the Person entering
      */
-    public void enterRoom(Persona x)
+    public void enterRoom(Player x)
     {
 
         System.out.println("----------------------------------------------");
@@ -37,7 +37,7 @@ public class Dungeon extends TheMedium {
 
             Runner.gameOff();
         }
-        else 
+        else
         {
             System.out.println("\t You quickly and easily dispatch the GHOUL with the MAGIC WORD. Perhaps it should have been a bit more cautious.");
             System.out.println("\t After all, it was ROMA that thought you were good enough to take it on, so you must be pretty incredible already.");
@@ -56,12 +56,4 @@ public class Dungeon extends TheMedium {
      * Removes the player from the room.
      * @param x
      */
-    public void leaveRoom(Persona x)
-    {
-        occupant = null;
-    }
-
-
-
-
 }

@@ -1,8 +1,9 @@
 package Overworld;
 
-import Beings.Persona;
 
-public class VillageEmpty extends TheMedium {
+import Beings.Player;
+
+public class VillageEmpty extends TheMedium implements EnterAndExit {
     public VillageEmpty (int x, int y) {
         super(x, y);
 
@@ -12,7 +13,7 @@ public class VillageEmpty extends TheMedium {
      * @param x the Person entering
      */
     //creates the dialogue for entering the village
-    public void enterRoom(Persona x)
+    public void enterRoom(Player x)
     {
         if (Village.isActive)
         {
@@ -42,7 +43,7 @@ public class VillageEmpty extends TheMedium {
      * Removes the player from the room.
      * @param x
      */
-    public void leaveRoom(Persona x)
+    public void leaveRoom(Player x)
     {
         occupant = null;
     }
